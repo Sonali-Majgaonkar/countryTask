@@ -1,31 +1,23 @@
-let cl=console.log;
-let imgUrl='https://image.tmdb.org/t/p/w1280';
-let infoIMDB=document.getElementById('infoIMDB');
+const cl=console.log;
+document.getElementById('countryCount').innerHTML=`Currenty,We have ${countries.length} contries`
+
+const countryData=document.getElementById('countryData');
 let result=``;
-
-movieArr.forEach(function(movie){
-    result+=`<div class="col-lg-3 col-md-6 col-xs-12">
-        <div class="card mb-4">
-            <figure class="movieCard">
-              <img src='${imgUrl}${movie.poster_path}'>
-              <figcaption>
-                <div class="row">
-                  <div class="col-sm-9">
-                    <h5>${movie.title}</h5>
-                  </div>
-                  <div class="col-sm-3">
-                    <h5>${movie.vote_average}</h5>
-                  </div>
-                  <div class="overview">
-                    <h4>Overview</h4>
-                    <p>${movie.overview}</p>
-                  </div>
+countries.forEach(function(country){
+  result+=`<div class='col-lg-3 col-md-6 col-xs-12 '>
+                <div class='card shadow p-3 mb-5 bg-white rounded countryCard'>
+                    <figure>
+                        <div class='text-center'> 
+                        <img src='${country.flag}'>
+                        </div>
+                        <figcaption class="pl-3">
+                            <h4 class='mt-3 text-warning text-center'>${country.name}</h4>
+                            <h6><strong>Capital:</strong> ${country.capital}</h6>
+                            <h6><strong>Language:</strong> ${country.languages}</h6>
+                            <h6><strong>Population:</strong> ${country.population}</h6>
+                        </figcaption>
+                    </figure>
                 </div>
-              </figcaption>
-            </figure>
-        </div>
-    </div>`
+            </div>`
 })
-
-infoIMDB.innerHTML=result
-cl(result);
+countryData.innerHTML=result;
